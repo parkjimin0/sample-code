@@ -5,4 +5,9 @@
   <%= @cell.name %>
 </p>
 
+<p>
+  <strong>Cell Type:</strong>
+  <%= @cell.cell_type[:name] %>
+</p>
+
 <%= link_to 'Back', beehive_path(@beehive) %>
