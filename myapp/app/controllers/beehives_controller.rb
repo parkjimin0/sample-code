@@ -1,5 +1,6 @@
 class BeehivesController < ApplicationController
   before_action :set_beehive, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with :name => "user", :password => "pass", :except => [:index, :show]
 
   # GET /beehives
   # GET /beehives.json
