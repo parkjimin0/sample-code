@@ -14,7 +14,7 @@ class BeehivesController < ApplicationController
   # GET /beehives/1
   # GET /beehives/1.json
   def show
-    @hive = Beehive(params[:id])
+    @hive = Beehive.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -29,7 +29,7 @@ class BeehivesController < ApplicationController
 
   # GET /beehives/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @beehive = Beehive.find(params[:id])
   end
 
   # POST /beehives
