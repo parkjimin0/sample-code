@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @beehive.name %>
+</p>
+
+<h2>Cells</h2>
+<% @beehive.cells.each do |cell| %>
+  <p>
+    <b>Cell:</b>
+    <%= cell.name %>
+  </p>
+<% end %>
+
+<h2>Add a cell:</h2>
+<%= form_for([@beehive, @beehive.cells.build]) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_beehive_path(@beehive) %> |
+<%= link_to 'Back', beehives_path %>
