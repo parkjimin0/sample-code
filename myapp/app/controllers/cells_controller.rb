@@ -16,6 +16,7 @@ class CellsController < ApplicationController
     # GET /beehives/1/cells/1/edit
     def edit
         @beehive = Beehive.find(params[:beehive_id])
+        @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
         @cell = @beehive.cells.find(params[:id])
         render "edit"
     end
@@ -23,7 +24,7 @@ class CellsController < ApplicationController
     def update
         @beehive = Beehive.find(params[:beehive_id])
         @cell = @beehive.cells.find(params[:id])
-        @cell.update cell_params 
+        @cell.update cell_params.merge(cell_type_id: params[:cell_type_id])
         redirect_to beehive_path(@beehive)
     end
 

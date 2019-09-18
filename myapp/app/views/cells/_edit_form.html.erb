@@ -2,6 +2,7 @@
     <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name %>
+      <%= select_tag(:cell_type_id , options_for_select(@cell_types)) %>
     </div>
     <div class="actions">
       <%= f.submit %>
