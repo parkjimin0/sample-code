@@ -14,8 +14,8 @@ class BeehivesController < ApplicationController
   # GET /beehives/1
   # GET /beehives/1.json
   def show
+    @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
     @hive = Beehive.find(params[:id])
-
     respond_to do |format|
       format.html
       format.json { render :json => @hive }

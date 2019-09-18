@@ -2,7 +2,7 @@ class CellsController < ApplicationController
 
     def create
         @beehive = Beehive.find(params[:beehive_id])
-        @cell = @beehive.cells.create(cell_params)
+        @cell = @beehive.cells.create(cell_params.merge(cell_type_id: params[:cell_type_id]))
         redirect_to beehive_path(@beehive)
     end
 
