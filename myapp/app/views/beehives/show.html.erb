@@ -6,23 +6,10 @@
 </p>
 
 <h2>Cells</h2>
-<% @beehive.cells.each do |cell| %>
-  <p>
-    <b>Cell:</b>
-    <%= cell.name %>
-  </p>
-<% end %>
+<%= render "cells/cell" %>
 
 <h2>Add a cell:</h2>
-<%= form_for([@beehive, @beehive.cells.build]) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render "cells/form" %>
 
 <%= link_to 'Edit', edit_beehive_path(@beehive) %> |
 <%= link_to 'Back', beehives_path %>
