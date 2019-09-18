@@ -5,6 +5,23 @@
   <%= @beehive.name %>
 </p>
 
+<table>
+  <tr>
+    <th>Types</th>
+    <th>Total Count</th>
+    <th>Percentage</th>
+  </tr>
+
+   <% CellType.all.each do |type| %>
+  <tr>
+    <td><%= type.name %></td>
+    <td><%= Cell.where(beehive_id: @beehive.id, cell_type_id: type.id).count %></td>
+    <td><%= "#{(Cell.where(beehive_id: @beehive.id, cell_type_id: type.id).count.to_f/Cell.where(beehive_id: 1).count.to_f) * 100} %" %></td>
+  </tr>
+  <% end %>
+
+</table>
+
 <h2>Cells</h2>
 <%= render "cells/cell" %>
 
