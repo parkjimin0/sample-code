@@ -1,5 +1,4 @@
 class Beehive < ApplicationRecord
+    has_many :cells
     validates :name, :presence => true
-
-    has_many :comments
 end
