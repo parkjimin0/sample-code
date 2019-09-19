@@ -17,7 +17,6 @@ class BeehivesController < ApplicationController
   # GET /beehives/1.json
   def show
     @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
-    @beehive = Beehive.find(params[:id])
     get_cumulative_cell_data_values(@beehive)
     respond_to do |format|
       format.html
@@ -30,16 +29,10 @@ class BeehivesController < ApplicationController
     @beehive = Beehive.new
   end
 
-  # GET /beehives/1/edit
-  def edit
-    @beehive = Beehive.find(params[:id])
-  end
-
   # POST /beehives
   # POST /beehives.json
   def create
     @beehive = Beehive.new(beehive_params)
-
     respond_to do |format|
       if @beehive.save
         format.html { redirect_to @beehive, notice: 'Beehive was successfully created.' }
