@@ -16,7 +16,8 @@ class BeehivesController < ApplicationController
   # GET /beehives/1.json
   def show
     @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
-    @hive = Beehive.find(params[:id])
+    @beehive = Beehive.find(params[:id])
+    get_cumulative_cell_data_values(@beehive)
     respond_to do |format|
       format.html
       format.json { render :json => @hive }
@@ -80,5 +81,9 @@ class BeehivesController < ApplicationController
 
     def beehive_params
       params.require(:beehive).permit(:name)
+    end
+
+    def get_cumulative_cell_data_values(beehive)
+      @cumulative_cell_data = CumulativeCellData.new(beehive).values
     end
 end
