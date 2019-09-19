@@ -9,7 +9,7 @@ class BeehivesController < ApplicationController
     @beehives = Beehive.all
     respond_to do |format|
       format.html
-      format.json { render :json => @beehives }
+      format.json { render :json => @beehives, :include => [:cells] }
     end
   end
 
