@@ -6,7 +6,7 @@ class CellsController < ApplicationController
     # GET /cells to see all cells from all hives
     def cells 
         @cells = Cell.all
-        render :json => @cells
+        render :json => @cells, :include => [:cell_type]
     end
 
     # GET /cell to see any individual cell 
