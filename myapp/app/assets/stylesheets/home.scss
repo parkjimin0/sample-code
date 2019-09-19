@@ -1,3 +1,23 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Home Page
+
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    width: 100%;
+    margin: 1em;
+    text-align: center;    
+}
+
+.hive-image {
+    background: url('https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjZ9tWX1tvkAhVEn-AKHcAuDgcQjRx6BAgBEAQ&url=https%3A%2F%2Fimgbin.com%2Fpng%2FDqN3hkJ6%2Fbeehive-drawing-png&psig=AOvVaw0SBpfRzovJShAJ_tM-TYrY&ust=1568940824107903');
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+

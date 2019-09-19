@@ -1,4 +1,12 @@
-<h1>Hello, Bees!</h1>
-<h2>Welcome to the Hive Center</h2>
-<%= link_to "See All Hives", beehives_path %>
+<div class="body">
+    <div class="item">
+        <h1 class="home-header">Welcome to the Hive Center</h1>
+    </div>
+    <div class="item">
+        <%= link_to beehives_path do %>
+            <%= image_tag "bee.png", class: "hive-image" %>
+        <% end %>
+        <h3>See All Hives? Click the bee!<h3>
+    </div>
+</div>
 
