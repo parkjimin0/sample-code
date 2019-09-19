@@ -1,5 +1,6 @@
 class BeehivesController < ApplicationController
   before_action :set_beehive, only: [:show, :edit, :update, :destroy]
+  #Basic auth. to create/edit/destroy hive or cell. Later, instill an admin section vs non-admin
   http_basic_authenticate_with :name => "user", :password => "pass", :except => [:index, :show]
 
   # GET /beehives
@@ -83,6 +84,7 @@ class BeehivesController < ApplicationController
       params.require(:beehive).permit(:name)
     end
 
+    # To retrieve all cells data by current beehive
     def get_cumulative_cell_data_values(beehive)
       @cumulative_cell_data = CumulativeCellData.new(beehive).values
     end

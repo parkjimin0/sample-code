@@ -21,6 +21,7 @@ class CellsController < ApplicationController
         render "edit"
     end
 
+    # PATCH/PUT /beehives/1/cells/1/edit
     def update
         @beehive = Beehive.find(params[:beehive_id])
         @cell = @beehive.cells.find(params[:id])
