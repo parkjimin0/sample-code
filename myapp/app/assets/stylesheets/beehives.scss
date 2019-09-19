@@ -1,3 +1,121 @@
-// Place all the styles related to the Beehives controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// All Beehives Layout
+
+.beehive-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  
+
+  .beehive-header {
+    color: white; 
+    font-family: monospace;
+    background-color: black;
+    padding: 1em;
+    align-self: center;
+    text-align: center;
+  }
+
+}
+
+.beehive-table-button {
+  flex-direction: column;
+}
+
+.name {
+  width: 100%;
+  margin: 1em;
+  text-align: center; 
+  font-size: 50px;  
+  padding: .5em; 
+  background-color: black;
+}
+
+th {
+  color: white;
+  font-family: monospace;
+}
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+}
+
+table, th, td {
+  border: 10px solid black;
+  padding: 30px;
+  margin: 30px;
+  text-align: center;
+} 
+
+a {
+  text-decoration: none;
+}
+
+.hive-name {
+  font-size: 20px;
+  padding: 1em;
+}
+
+#hexagon
+{   width: 100px;
+    height: 55px;
+    background: black;
+    position: relative;
+}
+
+#hexagon:before
+{   content: "";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid black;
+}
+
+#hexagon:after
+{   content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid black;
+}
+
+#hexagon span {
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding-left: 8px;
+}
+
+.new-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.beehive-form {
+  background-color: white;
+  padding: 2em;
+  margin: 1em;
+  font-size: 25px;
+  border: 10px solid black;
+}
+
+.form-h1 {
+  font-size: 5em;
+  text-decoration: underline
+}
+
+.options {
+  flex-direction: column
+}
+

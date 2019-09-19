@@ -1,27 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="beehive-body">
+  <p id="notice"><%= notice %></p>
 
-<h1>All Hives of 2019</h1>
+  <div class="beehive-table-button">
+    <h1 class="beehive-header">All Hives of 2019</h1>
+    <table>
+      <thead>
+        <tr>
+          <th class="name">Name</th>
+          <th colspan="3" class="name">Options</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @beehives.each do |beehive| %>
+          <tr>
+            <td class="hive-name"><%= beehive.name %></td>
+            <td><%= link_to 'Show', beehive %></td>
+            <td><%= link_to 'Edit', edit_beehive_path(beehive) %></td>
+            <td><%= link_to 'Destroy', beehive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-  <tbody>
-    <% @beehives.each do |beehive| %>
-      <tr>
-        <td><%= beehive.name %></td>
-        <td><%= link_to 'Show', beehive %></td>
-        <td><%= link_to 'Edit', edit_beehive_path(beehive) %></td>
-        <td><%= link_to 'Destroy', beehive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <br>
 
-<br>
-
-<%= link_to 'New Beehive', new_beehive_path %>
+  <%= link_to new_beehive_path do %>
+    <div id="hexagon"><span>Add Hive++</span></div>
+  <% end %>
+</div>

@@ -1,22 +1,24 @@
-<%= form_with(model: beehive, local: true) do |form| %>
-  <% if beehive.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(beehive.errors.count, "error") %> prohibited this beehive from being saved:</h2>
+<div class="beehive-form">
+  <%= form_with(model: beehive, local: true) do |form| %>
+    <% if beehive.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(beehive.errors.count, "error") %> prohibited this beehive from being saved:</h2>
 
-      <ul>
-        <% beehive.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% beehive.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :hive_name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
