@@ -1,17 +1,14 @@
-<% @beehive.cells.each do |cell| %>
-  <p>
-    <b>Cell:</b>
-    <%= cell.name %>
-  </p>
-
-
-  <tr>
-    <td><%= link_to 'Show', [cell.beehive, cell] %></td>
-    <td><%= link_to 'Edit', edit_beehive_cell_path(cell.beehive, cell) %></td>
-    <td>
-      <%= link_to 'Destroy', [cell.beehive, cell],
-      :confirm => 'Are you sure?',
-      :method => :delete %>
-    </td>
-  </tr>
-<% end %>
+<tbody>
+  <% @beehive.cells.each do |cell| %>
+    <tr>
+      <td class="hive-name"><%= cell.name %></td>
+      <td><%= link_to 'Show', [cell.beehive, cell] %></td>
+      <td><%= link_to 'Edit', edit_beehive_cell_path(cell.beehive, cell) %></td>
+      <td>
+        <%= link_to 'Destroy', [cell.beehive, cell],
+        :confirm => 'Are you sure?',
+        :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>

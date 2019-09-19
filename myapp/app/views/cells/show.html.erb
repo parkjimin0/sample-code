@@ -1,13 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="cell-info-body">
+  <p id="notice"><%= notice %></p>
+  <h1 class="form-h1">Cell Information</h1>
+  <div>
+    <p class="labels">
+      <strong>Cell Name:</strong>
+      <%= @cell.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cell.name %>
-</p>
-
-<p>
-  <strong>Cell Type:</strong>
-  <%= @cell.cell_type[:name] %>
-</p>
-
-<%= link_to 'Back', beehive_path(@beehive) %>
+    <p class="labels">
+      <strong>Cell Type:</strong>
+      <%= @cell.cell_type[:name] %>
+    </p>
+  </div>
+  <%= link_to 'Back', beehive_path(@beehive), class:"end-of-page-options" %>
+</div>

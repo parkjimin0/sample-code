@@ -1,10 +1,12 @@
-<%= form_for [beehive, cell] do |f| %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-      <%= select_tag(:cell_type_id , options_for_select(@cell_types)) %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+<div class="beehive-form">
+  <%= form_for [beehive, cell] do |f| %>
+      <div class="field">
+        <%= f.label :cell_name %><br />
+        <%= f.text_field :name %>
+        <%= select_tag(:cell_type_id , options_for_select(@cell_types)) %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+</div>

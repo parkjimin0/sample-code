@@ -2,5 +2,5 @@
 
 <%= render 'edit_form', beehive: @beehive, cell: @cell %>
 
-<%= link_to 'Show', @beehive %> |
-<%= link_to 'Back', beehives_path %>
+<%= link_to 'Show', @beehive, class:"end-of-page-options" %> |
+<%= link_to 'Back', beehive_path(@beehive), class:"end-of-page-options" %>
