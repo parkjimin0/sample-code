@@ -1,7 +1,7 @@
 class CellsController < ApplicationController
     before_action :set_beehive, :except => [:cells, :cell]
     before_action :set_cell, only: [:show, :edit, :update, :destroy]
-    http_basic_authenticate_with :name => "users", :password => "pass", :except => [:index, :show, :cells, :cell]
+    http_basic_authenticate_with :name => "user", :password => "pass", :except => [:index, :show, :cells, :cell]
 
     # GET /cells to see all cells from all hives
     def cells 
@@ -9,7 +9,7 @@ class CellsController < ApplicationController
         render :json => @cells, :include => [:cell_type, :beehive]
     end
 
-    # GET /cell to see any individual cell 
+    # GET /cell/:id to see any individual cell 
     def cell
         @cell = Cell.find(params[:id])
         render :json => @cell, :include => [:cell_type, :beehive]
