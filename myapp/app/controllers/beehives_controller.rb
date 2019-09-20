@@ -30,7 +30,7 @@ class BeehivesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @beehive }
-  end
+    end
   end
 
   # POST /beehives
@@ -75,6 +75,8 @@ class BeehivesController < ApplicationController
   private
     def set_beehive
       @beehive = Beehive.find(params[:id])
+    rescue
+      render :file => "public/404.html",  :status => 404
     end
 
     def beehive_params

@@ -25,7 +25,7 @@ class CellsController < ApplicationController
         @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
     end
 
-    # PATCH/PUT /beehives/1/cells/1
+    # PATCH/PUT /beehives/1/cells/1/edit
     def update
         @cell.update cell_params.merge(cell_type_id: params[:cell_type_id])
         redirect_to beehive_path(@beehive)
@@ -39,10 +39,14 @@ class CellsController < ApplicationController
     private
     def set_beehive
         @beehive = Beehive.find(params[:beehive_id])
+    rescue
+        render :file => "public/404.html",  :status => 404
     end
 
     def set_cell
         @cell = @beehive.cells.find(params[:id])
+    rescue
+        render :file => "public/404.html",  :status => 404
     end
 
     def cell_params
