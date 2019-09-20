@@ -20,7 +20,7 @@ class BeehivesController < ApplicationController
     get_cumulative_cell_data_values(@beehive)
     respond_to do |format|
       format.html
-      format.json { render :json => @beehive, :include => [:cells] }
+      format.json { render :json => @beehive, :include => { cells: { include: :cell_type }} }
     end
   end
 
