@@ -6,7 +6,7 @@ class CellsController < ApplicationController
     # GET /cells to see all cells from all hives
     def cells 
         @cells = Cell.all
-        render :json => @cells, :include => [:cell_type]
+        render :json => @cells, :include => [:cell_type, :beehive]
     end
 
     # GET /cell to see any individual cell 
@@ -15,25 +15,50 @@ class CellsController < ApplicationController
         render :json => @cell, :include => [:cell_type, :beehive]
     end
 
+    # POST /beehives/:id
+    # POST /beehives/:id.json
     def create
         @cell = @beehive.cells.create(cell_params.merge(cell_type_id: params[:cell_type_id]))
-        redirect_to beehive_path(@beehive)
+        respond_to do |format|
+            if @cell.save
+              format.html { redirect_to beehive_path(@beehive), notice: 'Cell was successfully created.' }
+              format.json { json_response(@cell, :created) }
+            else
+              format.html 
+              format.json { render json: @beehive.errors, status: :unprocessable_entity }
+            end
+        end
     end
 
-    # GET /beehives/1/cells/1/edit
+    # GET /beehives/:id/cells/:id/edit
     def edit
         @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
+        respond_to do |format|
+              format.html
+              format.json { render :json => @cell, :include => [:cell_type, :beehive] }
+        end
     end
 
-    # PATCH/PUT /beehives/1/cells/1/edit
+    # PATCH/PUT /beehives/:id/cells/:id/edit
     def update
         @cell.update cell_params.merge(cell_type_id: params[:cell_type_id])
-        redirect_to beehive_path(@beehive)
+        respond_to do |format|
+            if @cell.update(cell_params.merge(cell_type_id: params[:cell_type_id]))
+              format.html { redirect_to beehive_path(@beehive), notice: 'Cell was successfully updated.' }
+              format.json { json_response(@cell) }
+            else
+              format.html { render :edit }
+              format.json { render json: @beehive.errors, status: :unprocessable_entity }
+            end
+        end
     end
 
     def destroy
         @cell.destroy
-        redirect_to beehive_path(@beehive)
+        respond_to do |format|
+            format.html { redirect_to beehive_path(@beehive), notice: 'Beehive was successfully destroyed.' }
+            format.json { head :no_content }
+        end
     end
 
     private
