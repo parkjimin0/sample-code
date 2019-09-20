@@ -49,7 +49,7 @@ describe CellsController do
 
 	describe 'create' do
 		before do
-			http_login
+			http_login_cell
 		end
         it 'creates a cell' do
             post :create, format: :json, params: { beehive_id: 1, cell: { name: "sample cell"} }
@@ -65,7 +65,7 @@ describe CellsController do
 
 	describe 'update' do
 		before do
-			http_login
+			http_login_cell
 		end
 
 		context 'when beehive has updated' do
@@ -83,7 +83,7 @@ describe CellsController do
 
 	describe 'destroy' do
 		before do
-			http_login
+			http_login_cell
 		end
 		
 		it 'destroys a beehive' do

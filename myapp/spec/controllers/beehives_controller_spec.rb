@@ -64,7 +64,7 @@ describe BeehivesController do
 
 	describe 'new' do
 		before do
-			http_login
+			http_login_beehive
 		end
 
 		it 'returns status code 200' do
@@ -80,7 +80,7 @@ describe BeehivesController do
 
 	describe 'create' do
 		before do
-			http_login
+			http_login_beehive
 		end
 
 		context 'when beehive has been created' do
@@ -105,7 +105,7 @@ describe BeehivesController do
 
 	describe 'update' do
 		before do
-			http_login
+			http_login_beehive
 		end
 
 		context 'when beehive has updated' do
@@ -130,7 +130,7 @@ describe BeehivesController do
 
 	describe 'destroy' do
 		before do
-			http_login
+			http_login_beehive
 		end
 		
 		it 'destroys a beehive' do
