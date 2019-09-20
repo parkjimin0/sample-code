@@ -15,18 +15,22 @@ class CellsController < ApplicationController
         render :json => @cell, :include => [:cell_type, :beehive]
     end
 
+    # GET /beehives/:id
+    def new
+        @cell = Cell.new
+        respond_to do |format|
+        format.html
+        format.json { json_response(@cell) }
+        end
+    end
+
     # POST /beehives/:id
     # POST /beehives/:id.json
     def create
         @cell = @beehive.cells.create(cell_params.merge(cell_type_id: params[:cell_type_id]))
         respond_to do |format|
-            if @cell.save
-              format.html { redirect_to beehive_path(@beehive), notice: 'Cell was successfully created.' }
-              format.json { json_response(@cell, :created) }
-            else
-              format.html 
-              format.json { render json: @beehive.errors, status: :unprocessable_entity }
-            end
+            format.html { redirect_to beehive_path(@beehive), notice: 'Cell was successfully created.' }
+            format.json { json_response(@cell, :created) }
         end
     end
 
@@ -43,13 +47,8 @@ class CellsController < ApplicationController
     def update
         @cell.update cell_params.merge(cell_type_id: params[:cell_type_id])
         respond_to do |format|
-            if @cell.update(cell_params.merge(cell_type_id: params[:cell_type_id]))
               format.html { redirect_to beehive_path(@beehive), notice: 'Cell was successfully updated.' }
               format.json { json_response(@cell) }
-            else
-              format.html { render :edit }
-              format.json { render json: @beehive.errors, status: :unprocessable_entity }
-            end
         end
     end
 
