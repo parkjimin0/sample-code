@@ -6,8 +6,6 @@ describe CellsController do
     
     before(:all) do 
         @cells = create_list(:cell, 5, :empty)
-        @beehives = create_list(:beehive, 10)
-        @cell_types = create_list(:cell_type, 2)
 	end
     let(:cell_id) { @cells.first.id }
 
@@ -31,18 +29,18 @@ describe CellsController do
 
     describe 'cell' do
 		it 'returns 1 cell' do
-            get :cell, params: { id: 1 }
+            get :cell, params: { id: 6 }
             expect(json["name"]).to eq("empty")
             expect(json["beehive"]["name"]).to eq("Test Hive")
 		end
 
 		it 'returns status code 200' do
-			get :cell, params: { id: 1 }
+			get :cell, params: { id: 6 }
 			expect(response).to have_http_status(200)
 		end
 
 		it 'returns JSON' do
-			get :cell, params: { id: 1 }
+			get :cell, params: { id: 6 }
 			expect(response.content_type).to eq('application/json; charset=utf-8')
 		end
     end
@@ -68,14 +66,14 @@ describe CellsController do
 			http_login_cell
 		end
 
-		context 'when beehive has updated' do
-			it 'updates a cell' do
-				put :update, format: :json, params: { id: 1, beehive_id: 1, cell: { name: "new sample hive" } }
-				expect(json["name"]).to eq("new sample hive")
+		context 'when cell has updated' do
+            it 'updates a cell' do
+				put :update, format: :json, params: { id: 6, beehive_id: 18, cell: { name: "happy sample hive", cell_type_id: 1 } }
+				expect(json["name"]).to eq("happy sample hive")
 			end
 
 			it 'returns JSON' do
-				put :update, format: :json, params: { id: 1, beehive_id: 1, cell: { name: "new sample hive" } }
+				put :update, format: :json, params: { id: 6, beehive_id: 18, cell: { name: "happy sample hive", cell_type_id: 1} }
 				expect(response.content_type).to eq('application/json; charset=utf-8')
 			end
 		end
