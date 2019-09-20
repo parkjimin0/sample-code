@@ -13,8 +13,8 @@ class BeehivesController < ApplicationController
     end
   end
 
-  # GET /beehives/1
-  # GET /beehives/1.json
+  # GET /beehives/:id
+  # GET /beehives/:id.json
   def show
     @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
     get_cumulative_cell_data_values(@beehive)
@@ -48,8 +48,8 @@ class BeehivesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /beehives/1
-  # PATCH/PUT /beehives/1.json
+  # PATCH/PUT /beehives/:id
+  # PATCH/PUT /beehives/:id.json
   def update
     respond_to do |format|
       if @beehive.update(beehive_params)
@@ -62,8 +62,8 @@ class BeehivesController < ApplicationController
     end
   end
 
-  # DELETE /beehives/1
-  # DELETE /beehives/1.json
+  # DELETE /beehives/:id
+  # DELETE /beehives/:id.json
   def destroy
     @beehive.destroy
     respond_to do |format|
