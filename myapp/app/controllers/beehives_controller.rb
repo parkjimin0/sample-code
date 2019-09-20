@@ -18,6 +18,7 @@ class BeehivesController < ApplicationController
   def show
     @cell_types = CellType.all.map{|type| [ type.name, type.id ] }
     get_cumulative_cell_data_values(@beehive)
+    @beehive.total_count = @cumulative_cell_data.to_hash
     respond_to do |format|
       format.html
       format.json { render :json => @beehive, :include => { cells: { include: :cell_type }} }
