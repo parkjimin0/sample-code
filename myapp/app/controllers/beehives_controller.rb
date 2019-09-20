@@ -9,7 +9,7 @@ class BeehivesController < ApplicationController
     @beehives = Beehive.all
     respond_to do |format|
       format.html
-      format.json { render :json => @beehives, :include => [:cells] }
+      format.json { render :json => @beehives, :include => { cells: { include: :cell_type }} }
     end
   end
 
@@ -29,7 +29,7 @@ class BeehivesController < ApplicationController
     @beehive = Beehive.new
     respond_to do |format|
       format.html
-      format.json { render :json => @beehive }
+      format.json { json_response(@beehive) }
     end
   end
 
@@ -40,7 +40,7 @@ class BeehivesController < ApplicationController
     respond_to do |format|
       if @beehive.save
         format.html { redirect_to @beehive, notice: 'Beehive was successfully created.' }
-        format.json { render :show, status: :created, location: @beehive }
+        format.json { json_response(@beehive, :created) }
       else
         format.html { render :new }
         format.json { render json: @beehive.errors, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class BeehivesController < ApplicationController
     respond_to do |format|
       if @beehive.update(beehive_params)
         format.html { redirect_to @beehive, notice: 'Beehive was successfully updated.' }
-        format.json { render :show, status: :ok, location: @beehive }
+        format.json { json_response(@beehive) }
       else
         format.html { render :edit }
         format.json { render json: @beehive.errors, status: :unprocessable_entity }

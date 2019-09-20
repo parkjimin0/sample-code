@@ -12,7 +12,7 @@ class CellsController < ApplicationController
     # GET /cell to see any individual cell 
     def cell
         @cell = Cell.find(params[:id])
-        render :json => @cell, :include => [:cell_type]
+        render :json => @cell, :include => [:cell_type, :beehive]
     end
 
     def create
