@@ -42,11 +42,15 @@ class CumulativeCellData
 
     def cell_type_data(type_name)
         type = CellType.find_by(name: type_name)
-        count = Cell.where(beehive_id: @beehive.id, cell_type_id: type.id).count
-        {
+        @cells = Cell.where(beehive_id: @beehive.id, cell_type_id: type.id)
+        count = @cells.count
+        data = {
+            cell_ids: []  ,
             count: count,
             percentage: count.to_f/total_cell_count * 100
         }
+        @cells.each do |cell| data[:cell_ids] << cell.id end
+        data
     end
 
     def total_cell_count
