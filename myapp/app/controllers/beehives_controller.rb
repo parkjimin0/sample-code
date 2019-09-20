@@ -27,6 +27,10 @@ class BeehivesController < ApplicationController
   # GET /beehives/new
   def new
     @beehive = Beehive.new
+    respond_to do |format|
+      format.html
+      format.json { render :json => @beehive }
+  end
   end
 
   # POST /beehives
