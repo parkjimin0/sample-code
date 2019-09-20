@@ -45,7 +45,7 @@ class CumulativeCellData
         @cells = Cell.where(beehive_id: @beehive.id, cell_type_id: type.id)
         count = @cells.count
         data = {
-            cell_ids: []  ,
+            cell_ids: [],
             count: count,
             percentage: count.to_f/total_cell_count * 100
         }
