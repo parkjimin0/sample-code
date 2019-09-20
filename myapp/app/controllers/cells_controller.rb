@@ -24,6 +24,15 @@ class CellsController < ApplicationController
         end
     end
 
+    # GET beehives/:id/cells/:id
+    # GET beehives/:id/cells/:id.json
+    def show
+        respond_to do |format|
+            format.html 
+            format.json { render :json => @cell, :include => [:cell_type, :beehive] }
+        end
+    end
+
     # POST /beehives/:id
     # POST /beehives/:id.json
     def create
