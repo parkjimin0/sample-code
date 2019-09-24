@@ -6,7 +6,7 @@ Welcome to the Hive Center, a Rails app that handles the basic CRUD for hives an
 ## Development setup
 1. Seed the database to fill up your hive center: `rake db:seed` 
 2. Start to run the app: `rails server` and head to the hive center homepage/port :`localhost:3000`
-3. To view the JSON APIs for 4 functionalities: 
+3. To view the JSON APIs: 
     - For hives: 
         - To view individual hive and cumulative cells by type: `localhost:3000/beehives/:id.json`
     - For cells: 
